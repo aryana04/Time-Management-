@@ -14,7 +14,8 @@ public class Player1 extends Player
      */
     public void act()
     {
-    if(Greenfoot.isKeyDown("left")){
+    
+        if(Greenfoot.isKeyDown("left")){
             setLocation(getX() -5, getY());
     }
     if(Greenfoot.isKeyDown("right")){
