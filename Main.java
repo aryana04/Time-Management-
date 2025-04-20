@@ -19,7 +19,14 @@ public class Main extends World
         super(600, 400, 1); 
         GreenfootImage bg = new GreenfootImage("Title.png");
         bg.scale(600,400);
-        setBackground(bg); 
+        setBackground(bg);
+        
+        GreenfootSound bgMusic = new GreenfootSound("Zora's_Domain.mp3");
+        bgMusic.setVolume(50);
+        bgMusic.playLoop();
+        
+        GreenfootImage i = new GreenfootImage("download.png");
+        i.scale(20,20);
         
         Button startButton = new Button("Start.png", new ChooseCharacter());
         //addObject(startButton, getWidth()/2, getHeight()/2); this set it anywhere on screen
