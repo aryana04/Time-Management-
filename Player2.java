@@ -20,27 +20,28 @@ public class Player2 extends Player
         if(Greenfoot.isKeyDown("right")){
             setLocation(getX() +5, getY());
         }
-        
+
         if(Greenfoot.mouseClicked(this)){
-            Greenfoot.setWorld(new dorm()); //transition to dorm world when clicked
+            Greenfoot.setWorld(new dorm()); // transition to dorm world when clicked
         }
-        
-        if(getX() >= 600){
+
+        // From dorm to outside
+        if(getWorld() instanceof dorm && getX() >= 600){
             Player.storePosition(getX(), getY());
-            Greenfoot.setWorld(new outside());
+            Greenfoot.setWorld(new outside(50, 300)); // spawn in outside at (50, 300)
         }
-        
-        
-        //when player hits edge, they go outside 
-        if(isAtEdge()){
+
+        // From outside to hallway (Mario to maze) when at edge
+        if(getWorld() instanceof outside && isAtEdge()){
             Player.storePosition(getX(), getY());
-            Greenfoot.setWorld(new outside());
+            Greenfoot.setWorld(new hallway(100, 300)); // spawn in hallway at (100, 300)
         }
     }
-    
+
     public Player2(){
         GreenfootImage image = new GreenfootImage("Player2.png");
         image.scale(200,200);
         setImage(image);
     }
 }
+
